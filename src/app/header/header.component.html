@@ -1,4 +1,15 @@
-<div class="header">
-  <h2>Mihail Mihov Blog</h2>
-  <img [src]=imagePath alt='MMihov'/>
-</div>
+<mat-toolbar color="primary" fxFlex fxLayout="row">
+  <button
+    *ngIf="(isHandset$ | async)"
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="onToggleSidenav()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  Mihail Mihov BLOG
+  <span fxFlex fxLayoutAlign="flex-end">
+        <img [src]="imgUrlDsktp" alt='MMihov' *ngIf="!(isHandset$ | async)">
+        <img [src]="imgUrlMbl" alt='MMihov' *ngIf="(isHandset$ | async)">
+      </span>
+</mat-toolbar>

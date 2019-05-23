@@ -1,2 +1,19 @@
-<app-toolbar></app-toolbar>
-<app-dashboard></app-dashboard>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <app-toolbar (closeSidenav)="sidenav.close()"></app-toolbar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <app-dashboard></app-dashboard>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
