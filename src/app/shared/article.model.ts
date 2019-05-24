@@ -1,9 +1,9 @@
 export interface ArticleModel {
   titleHeading: string;
   titleDescription: string;
-  textBody: string;
+  textBody?: string;
   postKind: string;
-  postDate: Date;
+  postDate?: Date;
   imageURL: string;
-  isPublic: boolean;
+  isPublic?: boolean;
 }

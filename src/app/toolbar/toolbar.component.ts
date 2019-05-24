@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {Observable, Subscription} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 
@@ -8,8 +8,10 @@ import {map} from 'rxjs/operators';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnDestroy {
   @Output() closeSidenav = new EventEmitter<void>();
+
+  sub: Subscription;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -19,11 +21,17 @@ export class ToolbarComponent {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   onClose() {
-    this.isHandset$.subscribe(result => {
+    this.sub = this.isHandset$.subscribe(result => {
     if (result) {
       this.closeSidenav.emit();
     }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   // constructURL(bsURL: string, width: string) {

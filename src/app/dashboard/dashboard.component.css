@@ -8,6 +8,7 @@
   left: 15px;
   right: 15px;
   bottom: 15px;
+  overflow-y: auto;
 }
 
 .more-button {
@@ -18,4 +19,39 @@
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.article-card {
+  max-width: 400px;
+}
+
+.angular-header-image {
+  background-image: url("../../assets/angular.png");
+  background-size: cover;
+}
+
+.js-header-image {
+  background-image: url("../../assets/javascript.png");
+  background-size: cover;
+}
+
+.articleImage {
+  position: relative;
+  max-height: 50%;
+  width: auto;
+  margin-left: 1px;
+}
+
+.img {
+  width: 100%;
+  margin-bottom: 18%;
+}
+.card-picture {
+  width: 23%;
+  margin-bottom: 2%;
+}
+
+.container {
+  min-height: 100%;
+  width: 100%;
 }

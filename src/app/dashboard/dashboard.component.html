@@ -1,24 +1,20 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Blog</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
+<div fxLayout="row wrap" fxLayoutAlign="space-around">
+  <mat-card  fxFlex="0 0 calc(33.3% - 12px)"
+             fxFlex.sm="0 0 45%"
+             [ngStyle.gt-xs]="{'margin.px': 6 }"
+             fxFlex.xs="0 0 100%"
+             [ngStyle.xs]="{ 'margin-bottom.px': 10 }"
+             *ngFor="let article of articles">
         <mat-card-header>
+          <div mat-card-avatar [ngClass]="article.postKind"></div>
           <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
+            {{article.titleHeading}}
           </mat-card-title>
         </mat-card-header>
+        <hr>
+        <img mat-card-image [src]="article.imageURL" >
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div>{{article.titleDescription}}</div>
         </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+  </mat-card>
+  </div>
