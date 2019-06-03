@@ -1,0 +1,21 @@
+.hero {
+  background-image: url('/assets/img/rocky_mountain.png') !important;
+  background-size: cover;
+  background-position: center center;
+}
+
+.sidenav-container {
+  /*height: 100%;*/
+}
+
+.sidenav {
+  width: 150px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}

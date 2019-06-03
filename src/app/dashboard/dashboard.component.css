@@ -1,21 +1,21 @@
-.grid-container {
-  margin: 20px;
-}
+/*.grid-container {*/
+/*  margin: 20px;*/
+/*}*/
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-  overflow-y: auto;
-}
+/*.dashboard-card {*/
+/*  position: absolute;*/
+/*  top: 15px;*/
+/*  left: 15px;*/
+/*  right: 15px;*/
+/*  bottom: 15px;*/
+/*  overflow-y: auto;*/
+/*}*/
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
+/*.more-button {*/
+/*  position: absolute;*/
+/*  top: 5px;*/
+/*  right: 10px;*/
+/*}*/
 
 .dashboard-card-content {
   text-align: center;
@@ -35,6 +35,14 @@
   background-size: cover;
 }
 
+.custom-class {
+  position: fixed;
+  background-color: pink;
+  border-color: pink;
+  height: 30px;
+  width: 30px;
+}
+
 .articleImage {
   position: relative;
   max-height: 50%;
@@ -51,7 +59,23 @@
   margin-bottom: 2%;
 }
 
-.container {
-  min-height: 100%;
-  width: 100%;
+/*.container {*/
+/*  min-height: 100%;*/
+/*  width: 100%;*/
+/*}*/
+
+.button-up {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  outline: none;
+}
+
+.hero {
+  background-image: url('../../assets/img/rocky_mountain.png') !important;
+  background-size: cover;
+  background-position: center center;
 }

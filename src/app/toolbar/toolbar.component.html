@@ -1,18 +1,23 @@
     <mat-toolbar>
-      <mat-icon>home</mat-icon>
-      <span class="nav-caption">Menu</span>
+      <a routerLink="/" (click)="onClose()">
+      <mat-icon style="
+        position: relative;
+        top: 5px;
+        left: 5px;">home</mat-icon>
+      <span class="nav-caption-toolbar">Home</span>
+      </a>
     </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#" (click)="onClose()">
+    <mat-nav-list >
+      <a mat-list-item routerLink='/blog' (click)="onClose()">
         <mat-icon>memory</mat-icon>
         <span class="nav-caption">Technical</span>
       </a>
-      <a mat-list-item href="#" (click)="onClose()">
+      <a mat-list-item routerLink="/" (click)="onClose()">
         <mat-icon>explore</mat-icon>
         <span class="nav-caption">Lifestyle</span>
       </a>
-      <a mat-list-item href="#" (click)="onClose()">
+      <a mat-list-item routerLink="/edit" (click)="onClose()">
         <mat-icon>face</mat-icon>
-        <span class="nav-caption">About</span>
+        <span class="nav-caption">Edit</span>
       </a>
     </mat-nav-list>

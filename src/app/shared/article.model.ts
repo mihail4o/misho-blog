@@ -1,4 +1,5 @@
 export interface ArticleModel {
+  id?: string;
   titleHeading: string;
   titleDescription: string;
   textBody?: string;
