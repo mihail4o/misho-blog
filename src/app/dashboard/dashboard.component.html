@@ -4,7 +4,8 @@
              [ngStyle.gt-xs]="{'margin.px': 6 }"
              fxFlex.xs="0 0 100%"
              [ngStyle.xs]="{ 'margin-bottom.px': 10 }"
-             *ngFor="let article of articles">
+             *ngFor="let article of articles"
+              (click)="onClickCard(article.id)">
     <mat-card-header>
       <div mat-card-avatar [ngClass]="article.postKind"></div>
       <mat-card-title>
@@ -18,3 +19,6 @@
     </mat-card-content>
   </mat-card>
 </div>
+<!--<div>-->
+<!--  <markdown [data]="articles[0].textBody"></markdown>-->
+<!--</div>-->

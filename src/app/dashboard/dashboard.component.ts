@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import {ArticleModel} from '../shared/article.model';
 import {Observable, Subscription} from 'rxjs';
 import {AppService} from '../app.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   articles: ArticleModel[];
   articleSubscription: Subscription;
+  subscr: Subscription;
   private exChangedSubscription: Subscription;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -34,7 +36,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private appService: AppService) {}
+              private appService: AppService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.articleSubscription = this.appService.articlesChanged
@@ -50,14 +53,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     //   });
   }
 
-  ngOnDestroy(): void {
-    this.articleSubscription.unsubscribe();
-    // this.exChangedSubscription.unsubscribe();
-  }
 
   private fetchArticles() {
-    this.appService.fetchAvailableArticles();
-    console.log('articles[]: ' + this.articles);
+    this.appService.getArticles()
+      .subscribe(data => {
+        this.articles = data;
+      });
+    // this.appService.fetchAvailableArticles();
   }
 
 
@@ -65,4 +67,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
+  onClickCard(id: string) {
+    this.subscr = this.appService.getArticle(id)
+      .subscribe(data => {
+        this.router.navigate(['/blog/post/' + data.id]);
+      });
+  }
+
+  ngOnDestroy(): void {
+    if (this.articleSubscription) {
+      this.articleSubscription.unsubscribe();
+    }
+    if (this.subscr) {
+      this.subscr.unsubscribe();
+    }
+    // this.exChangedSubscription.unsubscribe();
+  }
 }
