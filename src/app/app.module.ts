@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import {BlogModule} from './blog/blog.module';
 import {environment} from '../environments/environment';
 import {AppService} from './app.service';
+import {MatMenuModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {AppService} from './app.service';
     HttpClientModule,
     RichTextEditorAllModule,
     MarkdownModule.forRoot({loader: HttpClient}),
-    FormsModule
+    FormsModule,
+    MatMenuModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

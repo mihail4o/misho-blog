@@ -1,10 +1,12 @@
 import {Component, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import { map } from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import {ArticleModel} from '../shared/article.model';
 import {Observable, Subscription} from 'rxjs';
 import {AppService} from '../app.service';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {ConfirmDialogComponent, ConfirmDialogModel} from '../shared/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -18,26 +20,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
   articleSubscription: Subscription;
   subscr: Subscription;
   private exChangedSubscription: Subscription;
+  result = '';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  // article1 = {
-  //   titleHeading: 'Add a blog to your Angular website using markdown files',
-  //   titleDescription: 'Before going further: If you are looking to implement a blog, you are looking to share your stories but you are also most probably looking to make your website more SEO friendly. ',
-  //   postKind: 'js-header-image',
-  //   imageURL: 'https://res.cloudinary.com/balivo/image/upload/c_thumb,w_200,g_face/v1558058145/misho_pics/GranCanyon2018_Pano1_ubddt1.png',
-  //   textBody:  '',
-  //   postDate:  new Date(),
-  //   isPublic: true
-  // };
-
-
   constructor(private breakpointObserver: BreakpointObserver,
               private appService: AppService,
-              private router: Router) {}
+              private router: Router,
+              public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.articleSubscription = this.appService.articlesChanged
@@ -82,5 +75,34 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.subscr.unsubscribe();
     }
     // this.exChangedSubscription.unsubscribe();
+  }
+
+  onUpdate(id: string) {
+    console.log('Update id: ' + id);
+  }
+
+  onRemove(id: string) {
+    const message = `Are you sure you want to remove this blog post?`;
+
+    const dialogData = new ConfirmDialogModel('Confirm Action', message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed()
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (dialogResult) {
+        // Conformed "true" - article deleted/removed!
+        this.appService.deleteArticle(id).subscribe(result => {
+          console.log('Removed id: ' + id);
+        }, err => console.log('err' + err));
+      } else {
+        console.log('Not removed: ' + id);
+      }
+    });
   }
 }

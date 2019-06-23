@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MaterialModule} from '../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FormsModule,
     MaterialModule,
     FlexLayoutModule
-  ]
+  ],
+  declarations: [ConfirmDialogComponent],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class SharedModule { }

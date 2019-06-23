@@ -1,22 +1,3 @@
-/*.grid-container {*/
-/*  margin: 20px;*/
-/*}*/
-
-/*.dashboard-card {*/
-/*  position: absolute;*/
-/*  top: 15px;*/
-/*  left: 15px;*/
-/*  right: 15px;*/
-/*  bottom: 15px;*/
-/*  overflow-y: auto;*/
-/*}*/
-
-/*.more-button {*/
-/*  position: absolute;*/
-/*  top: 5px;*/
-/*  right: 10px;*/
-/*}*/
-
 .dashboard-card-content {
   text-align: center;
 }
@@ -26,12 +7,42 @@
 }
 
 .angular-header-image {
-  background-image: url("../../assets/angular.png");
+  background-image: url("../../assets/angular.svg");
   background-size: cover;
 }
 
 .js-header-image {
-  background-image: url("../../assets/javascript.png");
+  background-image: url("../../assets/javascript.svg");
+  background-size: cover;
+}
+
+.html-header-image {
+  background-image: url("../../assets/html5.svg");
+  background-size: cover;
+}
+
+.firebase-header-image {
+  background-image: url("../../assets/firebase.svg");
+  background-size: cover;
+}
+
+.nodes-header-image {
+  background-image: url("../../assets/nodejs.svg");
+  background-size: cover;
+}
+
+.npm-header-image {
+  background-image: url("../../assets/npm.svg");
+  background-size: cover;
+}
+
+.css-header-image {
+  background-image: url("../../assets/css.svg");
+  background-size: cover;
+}
+
+.weheartit-header-image {
+  background-image: url("../../assets/weheartit.svg");
   background-size: cover;
 }
 
@@ -78,4 +89,14 @@
   background-image: url('../../assets/img/rocky_mountain.png') !important;
   background-size: cover;
   background-position: center center;
+}
+
+a:hover {
+  cursor:pointer;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
