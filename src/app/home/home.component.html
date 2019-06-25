@@ -1,0 +1,30 @@
+<div>
+<section class="hero is-bold is-info is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" style="max-width: 500px; margin-left: 80px; text-shadow: 2px 2px cadetblue; color: beige">
+        "Success is the ability to move from one failure to another without loss of enthusiasm"
+      </h1>
+      <h2 class="subtitle" style="margin-left: 100px">
+        Winston Churchill
+      </h2>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="container has-text-centered">
+      <button mat-mini-fab color="warn" aria-label="Scroll to content"
+               [ngx-scroll-to]="destinationRef">
+<!--               style= 'position: fixed;-->
+<!--                    bottom: 25px;-->
+<!--                    right: 25px'>-->
+        <mat-icon>get_app</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>
+<br>
+<div #destinationRef></div>
+</div>
+<div>
+  <app-dashboard></app-dashboard>
+</div>

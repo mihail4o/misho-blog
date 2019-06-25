@@ -1,0 +1,5 @@
+.hero {
+  background-image: url('../../assets/img/rocky_mountain.png') !important;
+  background-size: cover;
+  background-position: center center;
+}
