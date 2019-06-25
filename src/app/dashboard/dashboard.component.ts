@@ -78,7 +78,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onUpdate(id: string) {
-    console.log('Update id: ' + id);
+    const message = `Are you sure you want to update this blog post?`;
+
+    const dialogData = new ConfirmDialogModel('Confirm Action', message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed()
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (dialogResult) {
+        // Conformed "true" - article will be updated!
+          this.router.navigate(['/blog/edit/' + id]);
+      } else {
+        console.log('Not updated: ' + id);
+      }
+    });
   }
 
   onRemove(id: string) {
