@@ -1,0 +1,87 @@
+<section class="new-article" fxLayout="row" fxLayoutGap="20px">
+  <div fxFlex="50%"
+       fxFlex.sm="0 0 45%"
+       [ngStyle.gt-xs]="{'margin.px': 6 }"
+       fxFlex.xs="0 0 100%"
+       [ngStyle.xs]="{ 'margin-bottom.px': 10 }">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <p>
+        <mat-form-field>
+          <mat-label>Header</mat-label>
+          <input matInput placeholder="Fill article header" [(ngModel)]="article.titleHeading" name="header" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput #description maxlength="1024"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+                    cdkAutosizeMaxRows="15"
+                    placeholder="Fill article description"
+                    required
+                    [(ngModel)]="article.titleDescription" name="description"></textarea>
+          <mat-hint align="end">{{description.value.length}} / 1024</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Fill out image URL</mat-label>
+          <input matInput placeholder="Fill article image URL here"
+                 [(ngModel)]="article.imageURL"
+                 name="imageUrl" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Select kind of article</mat-label>
+          <mat-select [(ngModel)]="article.postKind" name="kind" required>
+            <mat-option *ngFor="let kindVal of kindOf" [value]="kindVal.value">
+              {{kindVal.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-checkbox [(ngModel)]="isMarkdown" name="isMarkdown">
+          Edit mode is {{isMarkdown ? ' Markdown, uncheck the box for HTML!' : ' HTML,  check the box for Markdown!'}}
+        </mat-checkbox>
+      </p>
+      <ejs-richtexteditor *ngIf="isMarkdown"
+                          #fromRTE
+                          [(value)]='value'
+                          required
+                          name="body"
+                          [(ngModel)]="article.textBody"
+                          height="400px"
+                          width="100%"
+                          editorMode='Markdown'
+                          [toolbarSettings]='tools'
+                          [quickToolbarSettings]='quickTools'></ejs-richtexteditor>
+
+      <ejs-richtexteditor *ngIf='!isMarkdown'
+                          #fromRTE
+                          [(value)]='value'
+                          required
+                          name="body"
+                          [(ngModel)]="article.textBody"
+                          height="400px"
+                          width="100%"
+                          editorMode='HTML'
+                          [toolbarSettings]='tools'
+                          [quickToolbarSettings]='quickTools'></ejs-richtexteditor>
+      <p>
+        <mat-checkbox [(ngModel)]="isPrivate" name="private">This article is private</mat-checkbox>
+      </p><span>
+      <mat-checkbox [(ngModel)]="previewOn" name="preview">Show preview window</mat-checkbox>
+    </span>
+      <p>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="primary" [disabled]="f.invalid" type="submit">Submit</button>
+      </p>
+    </form>
+  </div>
+  <div *ngIf="previewOn" fxFlex="50%" class="md-preview">
+    <div markdown  ngPreserveWhitespaces [data]="value"></div>
+  </div>
+</section>

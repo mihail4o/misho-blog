@@ -1,0 +1,34 @@
+.new-article {
+  padding: 30px;
+}
+
+.mat-form-field {
+  margin: 10px;
+  width: 100%;
+}
+.mat-divider {
+  margin-bottom: 20px;
+  margin-top: 40px;
+  width: 100%;
+  alignment: center;
+}
+
+.md-preview {
+  border: 2px solid burlywood;
+  padding: inherit;
+  overflow: auto;
+  min-height:auto;
+  max-height:100%;
+  height:850px;
+}
+
+img[src*='#left'] {
+  float: left;
+}
+img[src*='#right'] {
+  float: right;
+}
+img[src*='#center'] {
+  display: block;
+  margin: auto;
+}
