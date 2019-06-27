@@ -60,7 +60,8 @@ export class EditComponent implements OnInit, OnDestroy {
     textBody: '',
     postKind: '',
     imageURL: '',
-    isPublic: false
+    isPublic: false,
+    isMarkdown: true
   };
 
   isUpdate = false;
@@ -101,7 +102,7 @@ export class EditComponent implements OnInit, OnDestroy {
       postKind: form.value.kind,
       imageURL: form.value.imageUrl,
       postDate: new Date(),
-      isPublic: form.value.private
+      isPublic: form.value.private,
     };
     if (this.isUpdate) {
       this.appService.updateArticle(this.id, this.article)

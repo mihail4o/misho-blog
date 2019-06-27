@@ -7,4 +7,5 @@ export interface ArticleModel {
   postDate?: Date;
   imageURL: string;
   isPublic?: boolean;
+  isMarkdown?: boolean;
 }
